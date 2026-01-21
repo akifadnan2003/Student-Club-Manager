@@ -2,7 +2,7 @@
 
 import { createClient } from '@/utils/supabase/server'
 import { revalidatePath } from 'next/cache'
-import { isAdmin, ROLES } from '@/utils/roles'
+import { isAdmin } from '@/utils/roles'
 
 type FormState = {
     message: string

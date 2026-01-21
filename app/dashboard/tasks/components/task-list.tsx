@@ -17,7 +17,7 @@ type Task = {
     creator: { full_name: string | null } | null
 }
 
-export function TaskList({ tasks, currentUserId, userRole }: { tasks: Task[], currentUserId: string, userRole: string }) {
+export function TaskList({ tasks, userRole }: { tasks: Task[], userRole: string }) {
     const [loadingTask, setLoadingTask] = useState<string | null>(null);
 
     const handleAction = async (taskId: string, action: 'submit' | 'verify') => {

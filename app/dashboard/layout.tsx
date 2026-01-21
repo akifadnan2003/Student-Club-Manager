@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { createClient } from "@/utils/supabase/server";
@@ -38,9 +39,11 @@ export default async function DashboardLayout({
                     <div className="flex items-center gap-3">
                         <span className="text-white font-semibold tracking-wide text-sm opacity-90 font-mono">ISC ADMIN PANEL</span>
                         <div className="h-12 w-12 rounded-full overflow-hidden border-2 border-ulu-gold/50 shadow-lg shadow-ulu-blue/20 bg-white flex items-center justify-center">
-                            <img
+                            <Image
                                 src="/isc-logo.jpg"
                                 alt="ISC Logo"
+                                width={48}
+                                height={48}
                                 className="w-full h-full object-cover"
                             />
                         </div>

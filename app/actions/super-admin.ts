@@ -38,7 +38,7 @@ export async function deleteMember(userId: string): Promise<ActionState> {
     }
 
     // Explicitly delete profile if cascade didn't (safety)
-    const { error: profileError } = await supabaseAdmin
+    await supabaseAdmin
         .from('profiles')
         .delete()
         .eq('id', userId)

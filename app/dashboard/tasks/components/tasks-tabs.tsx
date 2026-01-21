@@ -18,13 +18,11 @@ export function TasksTabs({
     pending,
     submitted,
     verified,
-    currentUserId,
     userRole
 }: {
     pending: Task[],
     submitted: Task[],
     verified: Task[],
-    currentUserId: string,
     userRole: string
 }) {
     const [activeTab, setActiveTab] = useState<'pending' | 'submitted' | 'verified'>('pending');
@@ -65,9 +63,9 @@ export function TasksTabs({
 
             {/* Tab Panels */}
             <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
-                {activeTab === 'pending' && <TaskList tasks={pending} currentUserId={currentUserId} userRole={userRole} />}
-                {activeTab === 'submitted' && <TaskList tasks={submitted} currentUserId={currentUserId} userRole={userRole} />}
-                {activeTab === 'verified' && <TaskList tasks={verified} currentUserId={currentUserId} userRole={userRole} />}
+                {activeTab === 'pending' && <TaskList tasks={pending} userRole={userRole} />}
+                {activeTab === 'submitted' && <TaskList tasks={submitted} userRole={userRole} />}
+                {activeTab === 'verified' && <TaskList tasks={verified} userRole={userRole} />}
             </div>
         </div>
     );

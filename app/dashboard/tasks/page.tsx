@@ -47,8 +47,19 @@ export default async function TasksPage() {
         members = allMembers || [];
     }
 
+    // Define proper task type
+    type Task = {
+        id: string
+        title: string
+        description: string | null
+        status: 'pending' | 'submitted' | 'verified'
+        created_at: string
+        assignee: { full_name: string | null } | null
+        creator: { full_name: string | null } | null
+    }
+
     // Cast tasks to ensure types (Supabase types can be loose initially)
-    const typedTasks = (tasks || []).map(t => ({
+    const typedTasks: Task[] = (tasks || []).map(t => ({
         ...t,
         // Ensure relations are objects not arrays
         assignee: Array.isArray(t.assignee) ? t.assignee[0] : t.assignee,
@@ -72,10 +83,9 @@ export default async function TasksPage() {
             </div>
 
             <TasksTabs
-                pending={pendingTasks as any}
-                submitted={submittedTasks as any}
-                verified={verifiedTasks as any}
-                currentUserId={user.id}
+                pending={pendingTasks}
+                submitted={submittedTasks}
+                verified={verifiedTasks}
                 userRole={role}
             />
         </div>
